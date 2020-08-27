@@ -301,54 +301,18 @@ rnc2=zeros([N,1],dtype="float128")
 
 
 
-###H0=0.70634216*eV
-##H0=0.7064*eV
-##tau0=8*pi*(H0/2)**2/mu/bx**3/h**3
-##p=1/2
-##q=1
-###H0=0.71*eV
-##tau0=8*pi*(H0/2)**2/mu/bx**3/h**3
-##p=1/2
-##q=1
 
 
 H0=0.69*eV
 tau0=258.2267284e6    #Corresponding to 0.69eV barrier
 omega0=1.046926e8       #0.69*eV 3D ~10.65
-p=1
-q=1
+#p=1
+#q=1
 
 p=0.2
 q=2
 
-##def GptT(tau):
-##    GGptT=empty([len(tau),])
-##    w=where(abs(tau)>tau0)[0]
-##    tau[w]=tau0*sign(tau[w])
-##    w1=where(tau<0)[0]
-##    w2=where(tau>=0)[0]
-##    GGptT[w1]=(H0*(2-(1-(abs(tau[w1])/tau0)**p)**q))#-H0*(300-T)/T0
-##    GGptT[w2]=(H0*(1-(tau[w2]/tau0)**p)**q)#-H0*(300-T)/T0
-##    return GGptT
-##def GmtT(tau):
-##    GGmtT=empty([len(tau),])
-##    w=where(abs(tau)>tau0)[0]
-##    tau[w]=tau0*sign(tau[w])
-##    w1=where(tau<0)[0]
-##    w2=where(tau>=0)[0]
-##    GGmtT[w1]=(H0*(1-(abs(tau[w1])/tau0)**p)**q)#-H0*(300-T)/T0
-##    GGmtT[w2]=(H0*(2-(1-(tau[w2]/tau0)**p)**q))#-H0*(300-T)/T0
-##    return GGmtT
-##
-##
-##
-##rna1=omega0*exp(-GptT(effstra)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##rna2=omega0*exp(-GmtT(effstra)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##rnb1=omega0*exp(-GptT(effstrb)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##rnb2=omega0*exp(-GmtT(effstrb)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##rnc1=omega0*exp(-GptT(effstrc)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##rnc2=omega0*exp(-GmtT(effstrc)/kBT)#*exp(H0*(300-T)/kBT/T0)
-##
+
 
 
 
@@ -798,15 +762,7 @@ for it in range(Niter):
                             print(dist[w1[0][i],w1[1][i],0],'\n\n')
                             if xk[w1[0][i],0]>xk[w1[1][i],0]:
                                 xk[w1[0][i],0]-=1
-##                            else:
-##                                xk[w1[1][i],0]-=1
-##                    elif (kmchange[l,0]==kmchange[m,0])*abs(xk[l]-xk[m])+(kmchange[l,0]!=kmchange[m,0])*(xk[l]+xk[m])!=dist[l,m,0]:
-##                        print("rounding error not equal")
-##                        print("xk[l] = %s, kmchange[l,0] = %s, xk[m] = %s, kmchange[m,0] = %s" %(xk[l],kmchange[l,0],xk[m],kmchange[m,0]) )
-##                        print("distance between them is")
-##                        print(dist[l,m,0])
-##                        xk[l]+=1
-##                        print("added 1 to xk[l]")
+
                                     
         #If there is no new lower time but the wkp nucleation time is less than the migration time                       
         elif dtit<tmig: 
@@ -834,17 +790,7 @@ for it in range(Niter):
         xkxk  =hstack([xk,xk]).reshape([2*len(xk),1])        
         coordvx=hstack([coordv,vkvk,xkxk,kmckmc])
         coordvxx=hstack([coordv,vkvk,xkxk,kmckmc])
-        #coordvx=hstack([coordvx,xkxk,kmckmc])
-##        print("kmckmc is:")
-##        print(kmckmc)
-##        print("vkvk is:")
-##        print(vkvk)
-##        print("xkxk is:")
-##        print(xkxk)
-##        print("coordvx is:")
-##        print(coordvx,'\n\n')
-##        print("old coordvx is:")
-##        print(coordvxx,'\n\n')
+
         
         #Expected new kink details after migration (annihilation not accounted for)
         coordvxnw=copy(coordvxx)
