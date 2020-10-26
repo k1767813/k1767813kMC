@@ -14,7 +14,6 @@ from scipy.interpolate import interp1d
 from time import time
 
 ##import matplotlib
-###from mpl_toolkits import mplot3d
 ##from mpl_toolkits.mplot3d import Axes3D
 ##from matplotlib.pyplot import ion,figure,subplot,plot,pause,show,text,close
 ##matplotlib.use("TkAgg")
